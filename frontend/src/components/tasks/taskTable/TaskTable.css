@@ -1,0 +1,74 @@
+.task-table-container {
+  overflow-x: auto;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.task-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.task-table th,
+.task-table td {
+  padding: 12px 15px;
+}
+
+.task-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.task-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.task-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.task-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 5px;
+  transition: background-color 0.2s;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #0069d9;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
