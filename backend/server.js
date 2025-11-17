@@ -7,8 +7,7 @@ dotenv.config()
 const app = express()  
 
 app.use(cors({
-    // origin: process.env.CLIENT_URL,
-    origin: '*',  //Temporarily for testing
+    origin: process.env.CLIENT_URL || "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true
 }));
@@ -25,24 +24,31 @@ app.use('/api/tasks', taskRoutes)
 app.use('/api/users', userRoutes)
 
 //Connecting to MongoDB
-mongoose.connect(process.env.MONGO_URL)
-    .then(() => console.log('Database Connected'))
-    .catch((err) => console.error('Database Connection Failed:', err));
-
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log("Database Connected"))
+.catch((err) => console.error("Database Connection Failed:", err));
 
 process.on('unhandledRejection', err => {
   console.error('Unhandled rejection:', err);
   process.exit(1); // crash safely
 });
-
+    
 app.get('/', (req, res) => {
   res.send('Server is running.');
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
+
 //Starting Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 })
 
 module.exports = app;
