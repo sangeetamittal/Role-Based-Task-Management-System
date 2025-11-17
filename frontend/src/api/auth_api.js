@@ -1,15 +1,5 @@
-import axios from "axios";
+import apiClient from "./apiClient";
 
-const API = axios.create({
-  baseURL: "http://localhost:5000/api/auth", 
-});
+export const loginUser = (data) => apiClient.post("/auth/login", data);
 
-// LOGIN
-export const loginUser = async (data) => {
-  return await API.post("/login", data);
-};
-
-// SIGNUP
-export const signupUser = async (data) => {
-  return await API.post("/signup", data);
-};
+export const signupUser = (data) => apiClient.post("/auth/signup", data);

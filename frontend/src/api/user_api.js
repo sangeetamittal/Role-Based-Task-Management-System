@@ -1,22 +1,8 @@
-import axios from "axios";
+import apiClient from "./apiClient";
 
-const API = axios.create({
-  baseURL: "http://localhost:5000/api/users",
-});
+export const getAllUsers = (params) => apiClient.get("/users", { params });
 
-// attach token
-API.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
-
-// GET all users (Admin only)
-export const getAllUsers = (params) => API.get("/", {params});
-
-// UPDATE role
 export const updateUserRole = (id, data) =>
-  API.patch(`/${id}/role`, data);
+  apiClient.patch(`/users/${id}/role`, data);
 
-// DELETE user
-export const deleteUser = (id) => API.delete(`/${id}`);
+export const deleteUser = (id) => apiClient.delete(`/users/${id}`);
