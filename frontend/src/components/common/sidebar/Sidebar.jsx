@@ -30,6 +30,15 @@ const Sidebar = ({ role }) => {
           </Link>
         )}
 
+        {role === "Manager" && (
+          <Link 
+            to="/users" 
+            className={`menu-item assign ${isActive('/users') ? 'active' : ''}`}
+          >
+            <span>Assign Tasks</span>
+          </Link>
+        )}
+        
         <Link 
           to="/calendar" 
           className={`menu-item ${isActive('/calendar') ? 'active' : ''}`}
